@@ -2,10 +2,16 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [isActive, setIsActive] = useState(false);
+  const [activePresses, setActivePresses] =useState(0);
+  let isActive = activePresses === 0 ? false : true;
 
   function handleTap() {
-    setIsActive(true);
+    setActivePresses((activePresses) => activePresses + 1);
+    setTimeout(handleTimeout, 5000);
+  }
+
+  function handleTimeout() {
+    setActivePresses(activePresses => activePresses - 1);
   }
 
   return (
