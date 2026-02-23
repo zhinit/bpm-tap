@@ -22,5 +22,22 @@ button {
     rgba(18, 16, 16, 0.204),
     rgb(3, 15, 29)
   );
+}
+
+h1 {
   border-radius: 10px;
+}
+
+@keyframes pulse {
+  from {
+    scale: 100%;
+  }
+
+  50% {
+    scale: 110%;
+  }
+
+  to {
+    scale: 100%;
+  }
 }

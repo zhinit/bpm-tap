@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   const [activePresses, setActivePresses] = useState(0);
-  const last4TimesRef = useRef([0, 0, 0, 0]);
+  const last4TimesRef = useRef<number[]>([0, 0, 0, 0]);
 
   function handleTap() {
     setActivePresses((activePresses) => activePresses + 1);
@@ -31,9 +31,21 @@ function App() {
     return bpm;
   }
 
+  const bpm = calculateBpm();
+  const spb = (1 / bpm) * 60;
+  const animationStyle = bpm !== 0 ? 
+    {
+      animationName: "pulse",
+      animationDuration: `${spb}s`,
+      animationIterationCount: "infinite",
+      
+    } : {};
+
   return (
     <>
-      <h1>Your BPM is {calculateBpm()}</h1>
+      <h1
+      style={animationStyle}
+      >Your BPM is {bpm}</h1>
       <button onPointerDown={handleTap}>Tap Me</button>
     </>
   );
